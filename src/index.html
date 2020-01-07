@@ -20,16 +20,13 @@
     <section class="container">
 
       <header class="header">
-        <h1>Our pricing</h1>
+        <h1 class="header__heading">Our pricing</h1>
 
         <div class="switch">
-          <span class="switch__period">Annually</span>
-
-          <label class="switch__control">
-            <input type="checkbox" class="switch__checkbox">
+          <input type="checkbox" id="switch-toggle" class="switch__checkbox">
+          <label for="switch-toggle" class="switch__toggle">
+            <span class="switch__circle"></span>
           </label>
-
-          <span class="switch__period">Monthly</span>
         </div>
       </header>
 
@@ -43,7 +40,7 @@
             <li class="box__item">2 Users Allowed</l class="box__item"i>
             <li class="box__item">Send up to 3 GB</l class="box__item"i>
           </ul>
-          <button class="button">Learn more</button class="button">
+          <button class="button" title="Learn more">Learn more</button class="button">
         </div>
 
         <div class="box box--featured">
@@ -54,18 +51,18 @@
             <li class="box__item">5 Users Allowed</li>
             <li class="box__item">Send up to 10 GB</li>
           </ul>
-          <button class="button button--featured">Learn more</button>
+          <button class="button button--featured" title="Learn more">Learn more</button>
         </div>
 
         <div class="box">
           <h2 class="box__title">Master</h2>
-          <strong class="box__price"><span class="box__currency">$</span>499.99</strong>
+          <strong class="box__price"><span class="box__currency">$</span>399.99</strong>
           <ul class="box__list">
             <li class="box__item">2 TB Storage</li>
             <li class="box__item">10 Users Allowed</li>
             <li class="box__item">Send up to 20 GB</li>
           </ul>
-          <button class="button">Learn more</button>
+          <button class="button" title="Learn more">Learn more</button>
         </div>
 
       </div>

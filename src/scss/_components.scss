@@ -1,17 +1,75 @@
-// Components: anything reusable such as buttons, navbars, cards etc.
-
 // ==============================
 //             SWITCH
 // ==============================
 
 .switch {
-  display: flex;
-  align-items: center;
-  margin-top: 40px;
+  padding: 0 100px;
 
-  &__period {
-    padding: 0 12px;
-    color: $color__light-grayish-blue;
+  &__checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  &__toggle {
+    display: flex;
+    width: 70px;
+    height: 40px;
+    position: relative;
+    border-radius: 90px;
+    background: $gradient__primary;
+    cursor: pointer;
+    box-shadow: $shadow__primary;
+
+    &::before {
+      content: "Annually";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(calc(-100% - 12px), -50%);
+      color: $color__grayish-blue;
+    }
+
+    &::after {
+      content: "Monthly";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(calc(100% + 12px), -50%);
+      color: $color__light-grayish-blue;
+    }
+  }
+
+  &__circle {
+    display: flex;
+    position: relative;
+    top: 3px;
+    left: 3px;
+    width: 40px - 6px;
+    height: 40px - 6px;
+    border-radius: 50px;
+    background-color: $color__white;
+    box-shadow: $shadow__secondary;
+    transition: transform 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  &__checkbox:checked + .switch__toggle {
+    &::before {
+      color: $color__light-grayish-blue;
+    }
+
+    &::after {
+      color: $color__grayish-blue;
+    }
+
+    .switch__circle {
+      transform: translateX(30px);
+    }
   }
 }
 
@@ -20,16 +78,16 @@
 // ==============================
 
 .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   padding: 40px 24px;
   background-color: $color__white;
   text-align: center;
   border-radius: 10px;
-  /* prettier-ignore */
-  box-shadow: 0 1.2px 4px rgba(0, 0, 0, 0.014),
-              0 4.2px 9.4px rgba(0, 0, 0, 0.017),
-              0 11.8px 24.3px rgba(0, 0, 0, 0.025), 
-              0 45px 84px rgba(0, 0, 0, 0.06);
+  box-shadow: $shadow__primary;
 
   &__title {
     font-size: $typography__font-size--m;
@@ -50,6 +108,7 @@
   }
 
   &__list {
+    width: 100%;
     margin-bottom: 32px;
     list-style: none;
   }
@@ -64,7 +123,7 @@
   }
 
   &--featured {
-    background: $gradient__linear;
+    background: $gradient__primary;
     color: $color__white;
 
     .box__title {
@@ -76,6 +135,91 @@
 
       &:first-child {
         border-top: 1px solid rgba($color__white, 0.3);
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      min-height: 500px;
+    }
+  }
+}
+
+// ==============================
+//           BUTTON
+// ==============================
+
+.button {
+  display: block;
+  width: 100%;
+  position: relative;
+  border: 0;
+  border-radius: 10px;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  line-height: 48px;
+  color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  overflow: hidden;
+
+  &::before {
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 1px $color__purple;
+    border-radius: 10px;
+    background: $color__white;
+    color: $color__purple;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+  }
+
+  &::after {
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: $gradient__primary;
+    color: $color__white;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 0;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &--featured {
+    &::after {
+      box-shadow: inset 0 0 0 1px $color__white;
+      background: transparent;
+      opacity: 0;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+
+      &::before {
+        opacity: 0;
       }
     }
   }
