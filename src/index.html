@@ -4,10 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+
+  <meta name="description" content="Frontend Mentor solution">
+
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon-32x32.png">
+
+  <title>Pricing component with toggle</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
-  <h1 class="name">Site under construction</h1>
+  <main>
+
+    <section class="container">
+
+      <header class="header">
+        <h1>Our pricing</h1>
+
+        <div class="switch">
+          <span class="switch__period">Annually</span>
+
+          <label class="switch__control">
+            <input type="checkbox" class="switch__checkbox">
+          </label>
+
+          <span class="switch__period">Monthly</span>
+        </div>
+      </header>
+
+      <div class="box-wrapper">
+
+        <div class="box">
+          <h2 class="box__title">Basic</h2>
+          <strong class="box__price"><span class="box__currency">$</span class="box__currency">199.99</strong>
+          <ul class="box__list">
+            <li class="box__item">500 GB Storage</li class="box__item">
+            <li class="box__item">2 Users Allowed</l class="box__item"i>
+            <li class="box__item">Send up to 3 GB</l class="box__item"i>
+          </ul>
+          <button class="button">Learn more</button class="button">
+        </div>
+
+        <div class="box box--featured">
+          <h2 class="box__title">Professional</h2>
+          <strong class="box__price"><span class="box__currency">$</span>249.99</strong>
+          <ul class="box__list">
+            <li class="box__item">1 TB Storage</li>
+            <li class="box__item">5 Users Allowed</li>
+            <li class="box__item">Send up to 10 GB</li>
+          </ul>
+          <button class="button button--featured">Learn more</button>
+        </div>
+
+        <div class="box">
+          <h2 class="box__title">Master</h2>
+          <strong class="box__price"><span class="box__currency">$</span>499.99</strong>
+          <ul class="box__list">
+            <li class="box__item">2 TB Storage</li>
+            <li class="box__item">10 Users Allowed</li>
+            <li class="box__item">Send up to 20 GB</li>
+          </ul>
+          <button class="button">Learn more</button>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
 </body>
 </html>

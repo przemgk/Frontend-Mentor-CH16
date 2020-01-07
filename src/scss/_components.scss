@@ -1,1 +1,82 @@
 // Components: anything reusable such as buttons, navbars, cards etc.
+
+// ==============================
+//             SWITCH
+// ==============================
+
+.switch {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+
+  &__period {
+    padding: 0 12px;
+    color: $color__light-grayish-blue;
+  }
+}
+
+// ==============================
+//              BOX
+// ==============================
+
+.box {
+  width: 100%;
+  padding: 40px 24px;
+  background-color: $color__white;
+  text-align: center;
+  border-radius: 10px;
+  /* prettier-ignore */
+  box-shadow: 0 1.2px 4px rgba(0, 0, 0, 0.014),
+              0 4.2px 9.4px rgba(0, 0, 0, 0.017),
+              0 11.8px 24.3px rgba(0, 0, 0, 0.025), 
+              0 45px 84px rgba(0, 0, 0, 0.06);
+
+  &__title {
+    font-size: $typography__font-size--m;
+    color: $color__light-grayish-blue;
+  }
+
+  &__price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px 0;
+    font-size: $typography__font-size--xxl;
+  }
+
+  &__currency {
+    font-size: $typography__font-size--xl;
+    margin-right: 8px;
+  }
+
+  &__list {
+    margin-bottom: 32px;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba($color__light-grayish-blue, 0.3);
+
+    &:first-child {
+      border-top: 1px solid rgba($color__light-grayish-blue, 0.3);
+    }
+  }
+
+  &--featured {
+    background: $gradient__linear;
+    color: $color__white;
+
+    .box__title {
+      color: $color__white;
+    }
+
+    .box__item {
+      border-bottom: 1px solid rgba($color__white, 0.3);
+
+      &:first-child {
+        border-top: 1px solid rgba($color__white, 0.3);
+      }
+    }
+  }
+}
