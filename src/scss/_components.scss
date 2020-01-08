@@ -1,1 +1,287 @@
-// Components: anything reusable such as buttons, navbars, cards etc.
+// ==============================
+//             SWITCH
+// ==============================
+
+.switch {
+  &__checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  &__toggle {
+    display: flex;
+    width: 70px;
+    height: 40px;
+    margin: 0 calc(50% - 35px) 72px;
+    position: relative;
+    border-radius: 90px;
+    background: $gradient__primary;
+    cursor: pointer;
+    box-shadow: $shadow__primary;
+
+    &::before {
+      content: "Annually";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(calc(-100% - 12px), -50%);
+      color: $color__grayish-blue;
+    }
+
+    &::after {
+      content: "Monthly";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(calc(100% + 12px), -50%);
+      color: $color__light-grayish-blue;
+    }
+  }
+
+  &__circle {
+    display: flex;
+    position: relative;
+    top: 3px;
+    left: 3px;
+    width: 40px - 6px;
+    height: 40px - 6px;
+    border-radius: 50px;
+    background-color: $color__white;
+    box-shadow: $shadow__secondary;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  &__checkbox:checked + .switch__toggle {
+    &::before {
+      color: $color__light-grayish-blue;
+    }
+
+    &::after {
+      color: $color__grayish-blue;
+    }
+
+    .switch__circle {
+      transform: translateX(30px);
+    }
+  }
+}
+
+// ==============================
+//              BOX
+// ==============================
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 24px;
+  margin-bottom: 32px;
+  background-color: $color__white;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: $shadow__primary;
+
+  @media screen and (min-width: 1000px) {
+    width: 33.333%;
+  }
+
+  &__title {
+    font-size: $typography__font-size--m;
+    color: $color__light-grayish-blue;
+  }
+
+  &__price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 32px 0;
+    font-size: $typography__font-size--xxl;
+    color: transparent;
+    transform: translateX(10px);
+
+    &::before {
+      content: attr(data-annually-price);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: $color__dark-grayish-blue;
+      opacity: 1;
+      transition: opacity 0.2s 0.2s ease-in;
+    }
+
+    &::after {
+      content: attr(data-monthly-price);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: $color__dark-grayish-blue;
+      opacity: 0;
+      transition: opacity 0.2s ease-in;
+    }
+  }
+
+  &__currency {
+    font-size: $typography__font-size--xl;
+    color: $color__dark-grayish-blue;
+    margin-right: 8px;
+    transform: translateX(-12px);
+    transition: transform 0.2s 0.1s ease-in;
+  }
+
+  &__list {
+    width: 100%;
+    margin-bottom: 32px;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba($color__light-grayish-blue, 0.3);
+
+    &:first-child {
+      border-top: 1px solid rgba($color__light-grayish-blue, 0.3);
+    }
+  }
+
+  &--featured {
+    background: $gradient__primary;
+    color: $color__white;
+
+    .box__title {
+      color: $color__white;
+    }
+
+    .box__price {
+      &::before,
+      &::after {
+        color: $color__white;
+      }
+    }
+
+    .box__currency {
+      color: $color__white;
+    }
+
+    .box__item {
+      border-bottom: 1px solid rgba($color__white, 0.3);
+
+      &:first-child {
+        border-top: 1px solid rgba($color__white, 0.3);
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      min-height: 500px;
+    }
+  }
+}
+
+.switch__checkbox:checked ~ .box .box__price {
+  &::before {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+  }
+
+  &::after {
+    opacity: 1;
+    transition: opacity 0.2s 0.2s ease-in;
+  }
+
+  .box__currency {
+    transform: translateX(0);
+  }
+}
+
+// ==============================
+//           BUTTON
+// ==============================
+
+.button {
+  display: block;
+  width: 100%;
+  position: relative;
+  border: 0;
+  border-radius: 10px;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  line-height: 48px;
+  color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  overflow: hidden;
+
+  &::before {
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 1px $color__purple;
+    border-radius: 10px;
+    background: $color__white;
+    color: $color__purple;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+  }
+
+  &::after {
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: $gradient__primary;
+    color: $color__white;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 0;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &--featured {
+    &::after {
+      box-shadow: inset 0 0 0 1px $color__white;
+      background: transparent;
+      opacity: 0;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+}

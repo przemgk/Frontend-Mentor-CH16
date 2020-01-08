@@ -1,2 +1,51 @@
-// layout: contains all the CSS that handles the layout,
-//   such as the container and any grid systems.;
+// ==============================
+//          CONTAINER
+// ==============================
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  background: $color__very-light-grayish-blue url("../assets/images/bg-top.svg") no-repeat top left /
+    cover;
+
+  @media screen and (min-width: 1024px) {
+    padding: 64px 24px 140px;
+
+    background: url("../assets/images/bg-top.svg") no-repeat top right / 25%,
+      url("../assets/images/bg-bottom.svg") no-repeat bottom left / 30%,
+      $color__very-light-grayish-blue;
+  }
+}
+
+// ==============================
+//            HEADER
+// ==============================
+
+.header {
+  text-align: center;
+  text-transform: capitalize;
+
+  &__heading {
+    margin-bottom: 32px;
+  }
+}
+
+// ==============================
+//         BOX WRAPPER
+// ==============================
+
+.plans {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1000px;
+  }
+}
