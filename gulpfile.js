@@ -10,7 +10,7 @@ const path = require("path");
 
 const buildPaths = {
   buildFolder: path.join(__dirname, "build"),
-  scss: path.join(__dirname, "build", "scss"),
+  css: path.join(__dirname, "build", "css"),
   assets: path.join(__dirname, "build", "assets")
 };
 
@@ -21,7 +21,7 @@ const scss = (mode = "dev") =>
     .src("src/scss/**/*.scss")
     .pipe(sass({ outputStyle: "compressed" }))
     .pipe(rename({ suffix: ".min" }))
-    .pipe(gulp.dest(mode === "production" ? buildPaths.scss : "src/css"))
+    .pipe(gulp.dest(mode === "production" ? buildPaths.css : "src/css"))
     .pipe(browserSync.stream());
 
 const images = () =>
@@ -53,7 +53,7 @@ const watch = () => {
   gulp.watch("src/*.html").on("change", browserSync.reload);
 };
 
-const build = callback => runSequence(buildClean, html, () => scss("production"), images, callback);
+const build = callback => runSequence(buildClean, html, scss("production"), images, callback);
 
 module.exports = {
   scss,
